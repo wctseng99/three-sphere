@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
-import { Canvas, useFrame } from "@react-three/fiber";
+import { useFrame } from "@react-three/fiber";
 import { PointsMaterial, BufferGeometry, Float32BufferAttribute } from "three";
 import { gsap } from "gsap";
 
 const Sphere = () => {
   const pointsRef = useRef();
 
-  const numPoints = 5000;
+  const numPoints = 3500;
   const positions = [];
 
   for (let i = 0; i < numPoints; i++) {
@@ -63,7 +63,7 @@ const Sphere = () => {
       ease: "power2.out",
     });
 
-    const scaleFactor = Math.cos(mouse.y * 2) * 0.6 + 1.5;
+    const scaleFactor = Math.cos(mouse.y * 2) * 0.5 + 1.8;
 
     // Use gsap for smooth scaling animation
     gsap.to(pointsRef.current.scale, {
@@ -76,14 +76,16 @@ const Sphere = () => {
   });
 
   return (
-    <group>
+    <>
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
       <points
         ref={pointsRef}
         scale={[1.7, 1.7, 1.7]}
         geometry={geometry}
         material={material}
       />
-    </group>
+    </>
   );
 };
 
