@@ -6,11 +6,13 @@ import Home from "./Components/Home/Home";
 const App = () => {
   return (
     <>
-      <Canvas style={{ position: "absolute", width: "100vw", height: "100vh" }}>
-        <Sphere />
-      </Canvas>
-      <div className="flex items-center justify-center h-screen">
-        <Home />
+      <div className="bg-zinc-300">
+        <Canvas
+          style={{ position: "absolute", width: "100vw", height: "100vh" }}
+        >
+          <Sphere />
+        </Canvas>
+          <Home />
       </div>
     </>
   );
